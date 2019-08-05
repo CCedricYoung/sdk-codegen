@@ -1,0 +1,21 @@
+matrix:
+  include:
+    - name: "Python 3.7"
+      language: python
+      python: 3.7
+      dist: xenial
+      before_install: 
+        - cd python/
+      install:
+        - pip install pipenv
+        - pipenv install
+      script:
+        - python -m pytest
+
+    - name: "TypeScript"
+      language: node_js
+      before_script:
+        - yarn install
+        - cd typescript/looker
+      script:
+        - yarn jest
